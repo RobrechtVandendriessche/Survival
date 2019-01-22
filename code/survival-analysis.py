@@ -43,6 +43,16 @@ kmf.survival_function_
 kmf.median_
 kmf.plot()
 
+from lifelines import WeibullFitter
+
+wf = WeibullFitter()
+wf.fit(T, E)
+
+print(wf.lambda_, wf.rho_)
+wf.print_summary()
+
+wf.plot()
+
 # Plot Kaplan-Meier function per group
 groups = df['group']
 ix = (groups == "miR-137")
