@@ -75,5 +75,24 @@ def bivariate(df_set, y_var, x_var):
     else:
         "dtype not recognized or too many categories"
         
-        
-        
+
+def cleaning(text):
+
+    import string
+    exclude = set(string.punctuation)
+    import re
+    # remove new line and digits with regular expression
+    text = re.sub(r'\n', '', text)
+    text = re.sub(r'\d', '', text)
+    # remove non-ascii characters
+    text = ''.join(character for character in text if ord(character) < 128)
+    # remove punctuations
+    text = ''.join(character for character in text if character not in exclude)
+    # standardize white space
+    text = re.sub(r'\s+', '_', text)
+    # drop capitalization
+    text = text.lower()
+    #remove white space
+    #text = text.strip()
+
+    return text
